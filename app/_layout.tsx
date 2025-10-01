@@ -1,3 +1,4 @@
+import { theme } from "@/global_css";
 import {
 	Manrope_400Regular,
 	Manrope_500Medium,
@@ -39,10 +40,15 @@ export default function RootLayout() {
 			<Stack.Screen
 				name="categories"
 				options={{
-					title: "Categories",
+					title: "Manner-Up",
 					headerShown: true,
 					headerBackVisible: false,
 					gestureEnabled: false,
+					headerStyle: {
+						backgroundColor: theme.colors.background,
+					},
+					headerTintColor: theme.colors.text,
+					headerShadowVisible: true,
 				}}
 			/>
 		</Stack>

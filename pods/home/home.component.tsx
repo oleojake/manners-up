@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
+		backgroundColor: colors.background,
 	},
 	icon: {
 		marginBottom: 28,

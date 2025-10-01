@@ -8,8 +8,7 @@ export const colors = {
 	iosBlue: '#007AFF',
 	iosPurple: '#5856D6',
 
-	background: '#FFFFFF',
-	backgroundSecondary: '#F5F5F5',
+	background: '#F6F7F8',
 
 	text: '#000000',
 	textSecondary: '#6E6E73',
