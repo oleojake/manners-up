@@ -1,18 +1,5 @@
-import { HomeContainer } from "@/pods";
-import { StyleSheet, View } from "react-native";
+import { HomeContainer } from "@/pods/home";
 
 export default function Index() {
-	return (
-		<View style={styles.container}>
-			<HomeContainer />
-		</View>
-	);
+	return <HomeContainer />;
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-	},
-});

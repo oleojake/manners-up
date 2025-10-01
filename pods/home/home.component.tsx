@@ -20,7 +20,7 @@ export const HomeComponent = () => {
 			</Text>
 			<Pressable
 				style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
-				onPress={() => router.push("/categories")}
+				onPress={() => router.replace("/categories")}
 			>
 				<Text style={styles.buttonText}>Get Started</Text>
 			</Pressable>

@@ -1,7 +1,12 @@
 
 export const colors = {
-	primary: '#007AFF',
-	secondary: '#5856D6',
+	primary: '#1B4332',
+	primaryDark: '#081C15',
+	accent: '#D4AF37',
+	accentDark: '#B8941F',
+
+	iosBlue: '#007AFF',
+	iosPurple: '#5856D6',
 
 	background: '#FFFFFF',
 	backgroundSecondary: '#F5F5F5',

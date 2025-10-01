@@ -10,7 +10,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-// Prevenir que la pantalla de splash se oculte automáticamente
+// Prevent auto hide splash screen
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -24,7 +24,7 @@ export default function RootLayout() {
 
 	useEffect(() => {
 		if (fontsLoaded || fontError) {
-			// Ocultar la pantalla de splash cuando las fuentes estén cargadas
+			// Hide splash screen when fonts are loaded
 			SplashScreen.hideAsync();
 		}
 	}, [fontsLoaded, fontError]);
@@ -33,5 +33,18 @@ export default function RootLayout() {
 		return null;
 	}
 
-	return <Stack />;
+	return (
+		<Stack>
+			<Stack.Screen name="index" options={{ headerShown: false }} />
+			<Stack.Screen
+				name="categories"
+				options={{
+					title: "Categories",
+					headerShown: true,
+					headerBackVisible: false,
+					gestureEnabled: false,
+				}}
+			/>
+		</Stack>
+	);
 }
