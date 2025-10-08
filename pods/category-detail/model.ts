@@ -34,10 +34,8 @@ export interface CategoryDetail {
 
 export interface TakenPhoto {
 	id: string;
-	categoryId: string;
 	referenceImageId: string;
 	photoUri: string;
 	timestamp: number;
-	categoryTitle: string;
 	referenceImageTitle: string;
 }

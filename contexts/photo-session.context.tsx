@@ -2,20 +2,16 @@ import React, { createContext, useContext, useState } from "react";
 
 /**
  * Este Context maneja la sesión actual de toma de foto.
- * Almacena información sobre qué foto de referencia se está usando
- * y la foto que el usuario ha tomado.
+ * Almacena información sobre qué foto de referencia se está usando.
+ * Las fotos tomadas se guardan en AsyncStorage, no en el Context.
  */
 
-interface ReferenceImageInfo {
-	categoryId: string | null;
-	referenceImageId: string | null;
-	referenceImageTitle: string | null;
-}
-
 interface PhotoSessionContextType {
-	// Datos de la sesión agrupados
-	session: ReferenceImageInfo & {
-		photoUri: string | null;
+	// Datos de la imagen de referencia actual
+	session: {
+		categoryId: string | null;
+		referenceImageId: string | null;
+		referenceImageTitle: string | null;
 	};
 
 	// Acciones para modificar el estado
@@ -25,7 +21,6 @@ interface PhotoSessionContextType {
 			referenceImageId: string,
 			referenceImageTitle: string
 		) => void;
-		setPhotoUri: (uri: string) => void;
 		clearSession: () => void;
 	};
 }
@@ -46,7 +41,6 @@ export const PhotoSessionProvider: React.FC<{ children: React.ReactNode }> = ({
 	const [referenceImageTitle, setReferenceImageTitle] = useState<string | null>(
 		null
 	);
-	const [photoUri, setPhotoUriState] = useState<string | null>(null);
 
 	const setPhotoSession = (
 		catId: string,
@@ -58,15 +52,10 @@ export const PhotoSessionProvider: React.FC<{ children: React.ReactNode }> = ({
 		setReferenceImageTitle(refImgTitle);
 	};
 
-	const setPhotoUri = (uri: string) => {
-		setPhotoUriState(uri);
-	};
-
 	const clearSession = () => {
 		setCategoryId(null);
 		setReferenceImageId(null);
 		setReferenceImageTitle(null);
-		setPhotoUriState(null);
 	};
 
 	return (
@@ -76,11 +65,9 @@ export const PhotoSessionProvider: React.FC<{ children: React.ReactNode }> = ({
 					categoryId,
 					referenceImageId,
 					referenceImageTitle,
-					photoUri,
 				},
 				actions: {
 					setPhotoSession,
-					setPhotoUri,
 					clearSession,
 				},
 			}}
