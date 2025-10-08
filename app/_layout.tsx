@@ -1,3 +1,4 @@
+import { PhotoSessionProvider } from "@/contexts/photo-session.context";
 import { theme } from "@/global_css";
 import {
 	Manrope_400Regular,
@@ -35,22 +36,58 @@ export default function RootLayout() {
 	}
 
 	return (
-		<Stack>
-			<Stack.Screen name="index" options={{ headerShown: false }} />
-			<Stack.Screen
-				name="categories"
-				options={{
-					title: "Manner-Up",
-					headerShown: true,
-					headerBackVisible: false,
-					gestureEnabled: false,
-					headerStyle: {
-						backgroundColor: theme.colors.background,
-					},
-					headerTintColor: theme.colors.text,
-					headerShadowVisible: true,
-				}}
-			/>
-		</Stack>
+		<PhotoSessionProvider>
+			<Stack>
+				<Stack.Screen name="index" options={{ headerShown: false }} />
+				<Stack.Screen
+					name="categories"
+					options={{
+						title: "Manner-Up",
+						headerShown: true,
+						headerBackVisible: false,
+						gestureEnabled: false,
+						headerStyle: {
+							backgroundColor: theme.colors.background,
+						},
+						headerTintColor: theme.colors.text,
+						headerShadowVisible: true,
+					}}
+				/>
+				<Stack.Screen
+					name="category-detail"
+					options={{
+						title: "Categories",
+						headerShown: true,
+						headerBackVisible: true,
+						headerBackTitle: "Back",
+						headerStyle: {
+							backgroundColor: theme.colors.background,
+						},
+						headerTintColor: theme.colors.text,
+						headerShadowVisible: true,
+					}}
+				/>
+				<Stack.Screen
+					name="camera"
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<Stack.Screen
+					name="photo-comparison"
+					options={{
+						title: "Back to lesson",
+						headerShown: true,
+						headerBackVisible: true,
+						headerBackTitle: "Back",
+						headerStyle: {
+							backgroundColor: theme.colors.background,
+						},
+						headerTintColor: theme.colors.text,
+						headerShadowVisible: true,
+					}}
+				/>
+			</Stack>
+		</PhotoSessionProvider>
 	);
 }
