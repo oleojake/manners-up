@@ -8,7 +8,6 @@ interface PhotoComparisonComponentProps {
 	referenceImageTitle: string;
 	currentPhotoUri: string | null;
 	onTakePhoto: () => void;
-	onSave: () => void;
 }
 
 export const PhotoComparisonComponent: React.FC<
@@ -18,7 +17,6 @@ export const PhotoComparisonComponent: React.FC<
 	referenceImageTitle,
 	currentPhotoUri,
 	onTakePhoto,
-	onSave,
 }) => {
 	return (
 		<View style={styles.container}>
@@ -49,11 +47,6 @@ export const PhotoComparisonComponent: React.FC<
 						{currentPhotoUri ? "Retake Photo" : "Take Photo"}
 					</Text>
 				</TouchableOpacity>
-				{currentPhotoUri && (
-					<TouchableOpacity style={styles.saveButton} onPress={onSave}>
-						<Text style={styles.saveButtonText}>Save</Text>
-					</TouchableOpacity>
-				)}
 			</View>
 		</View>
 	);
@@ -94,13 +87,10 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 	},
 	buttons: {
-		flexDirection: "row",
 		paddingHorizontal: 20,
 		paddingBottom: 40,
-		gap: 12,
 	},
 	takePhotoButton: {
-		flex: 1,
 		backgroundColor: theme.colors.accent,
 		paddingVertical: 12,
 		borderRadius: 8,
@@ -110,18 +100,6 @@ const styles = StyleSheet.create({
 		gap: 8,
 	},
 	takePhotoButtonText: {
-		color: "white",
-		fontSize: 16,
-		fontWeight: "600",
-	},
-	saveButton: {
-		flex: 1,
-		backgroundColor: theme.colors.accent,
-		paddingVertical: 12,
-		borderRadius: 8,
-		alignItems: "center",
-	},
-	saveButtonText: {
 		color: "white",
 		fontSize: 16,
 		fontWeight: "600",

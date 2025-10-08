@@ -17,7 +17,8 @@ export const CameraButton: React.FC<CameraButtonProps> = (props) => {
 	const { actions } = usePhotoSession();
 
 	const handlePress = () => {
-		// Guardar la información de la sesión en el Context
+		// Limpiar la sesión anterior y crear una nueva
+		actions.clearSession();
 		actions.setPhotoSession(categoryId, referenceImageId, referenceImageTitle);
 		router.push("/photo-comparison");
 	};
