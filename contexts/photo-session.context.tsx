@@ -6,23 +6,28 @@ import React, { createContext, useContext, useState } from "react";
  * y la foto que el usuario ha tomado.
  */
 
-interface PhotoSessionContextType {
-	// Información de la imagen de referencia
+interface ReferenceImageInfo {
 	categoryId: string | null;
 	referenceImageId: string | null;
 	referenceImageTitle: string | null;
+}
 
-	// Foto tomada por el usuario
-	photoUri: string | null;
+interface PhotoSessionContextType {
+	// Datos de la sesión agrupados
+	session: ReferenceImageInfo & {
+		photoUri: string | null;
+	};
 
-	// Funciones para actualizar el estado
-	setPhotoSession: (
-		categoryId: string,
-		referenceImageId: string,
-		referenceImageTitle: string
-	) => void;
-	setPhotoUri: (uri: string) => void;
-	clearSession: () => void;
+	// Acciones para modificar el estado
+	actions: {
+		setPhotoSession: (
+			categoryId: string,
+			referenceImageId: string,
+			referenceImageTitle: string
+		) => void;
+		setPhotoUri: (uri: string) => void;
+		clearSession: () => void;
+	};
 }
 
 // Crear el Context con un valor por defecto vacío
@@ -67,13 +72,17 @@ export const PhotoSessionProvider: React.FC<{ children: React.ReactNode }> = ({
 	return (
 		<PhotoSessionContext.Provider
 			value={{
-				categoryId,
-				referenceImageId,
-				referenceImageTitle,
-				photoUri,
-				setPhotoSession,
-				setPhotoUri,
-				clearSession,
+				session: {
+					categoryId,
+					referenceImageId,
+					referenceImageTitle,
+					photoUri,
+				},
+				actions: {
+					setPhotoSession,
+					setPhotoUri,
+					clearSession,
+				},
 			}}
 		>
 			{children}

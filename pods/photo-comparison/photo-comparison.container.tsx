@@ -6,10 +6,9 @@ import { PhotoComparisonComponent } from "./photo-comparison.component";
 
 export const PhotoComparisonContainer: React.FC = () => {
 	const router = useRouter();
-
-	// Obtener datos del Context
+	const { session } = usePhotoSession();
 	const { categoryId, referenceImageId, referenceImageTitle, photoUri } =
-		usePhotoSession();
+		session;
 
 	// Usar el Hook personalizado para cargar la imagen de referencia
 	const referenceImageSource = useReferenceImage(categoryId, referenceImageId);

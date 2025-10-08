@@ -5,10 +5,10 @@ import { CameraComponent } from "./camera.component";
 
 export const CameraContainer: React.FC = () => {
 	const router = useRouter();
-	const { setPhotoUri } = usePhotoSession();
+	const { actions } = usePhotoSession();
 
 	const handlePhotoTaken = (photoUri: string) => {
-		setPhotoUri(photoUri);
+		actions.setPhotoUri(photoUri);
 		router.back();
 	};
 

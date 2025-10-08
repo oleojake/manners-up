@@ -11,17 +11,14 @@ interface CameraButtonProps {
 	referenceImageTitle: string;
 }
 
-export const CameraButton: React.FC<CameraButtonProps> = ({
-	categoryId,
-	referenceImageId,
-	referenceImageTitle,
-}) => {
+export const CameraButton: React.FC<CameraButtonProps> = (props) => {
+	const { categoryId, referenceImageId, referenceImageTitle } = props;
 	const router = useRouter();
-	const { setPhotoSession } = usePhotoSession();
+	const { actions } = usePhotoSession();
 
 	const handlePress = () => {
 		// Guardar la información de la sesión en el Context
-		setPhotoSession(categoryId, referenceImageId, referenceImageTitle);
+		actions.setPhotoSession(categoryId, referenceImageId, referenceImageTitle);
 		router.push("/photo-comparison");
 	};
 
