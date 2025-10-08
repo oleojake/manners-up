@@ -8,7 +8,7 @@ export const HomeComponent = () => {
 	return (
 		<View style={styles.container}>
 			<Ionicons
-				name="restaurant"
+				name="ribbon"
 				size={64}
 				style={styles.icon}
 				color={colors.accent}
