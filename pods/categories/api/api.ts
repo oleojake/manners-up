@@ -5,7 +5,7 @@ export const fetchCategories = (): Promise<Category[]> => {
 		{
 			id: "1",
 			name: "Table Setting",
-			image: require("@/assets/categories-list/tabble-setting.jpg"),
+			image: require("@/assets/categories-list/table-setting.jpg"),
 		},
 		{
 			id: "2",

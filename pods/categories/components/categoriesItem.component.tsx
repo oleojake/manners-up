@@ -1,6 +1,7 @@
 import { colors, typography } from "@/global_css/theme";
+import { router } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text } from "react-native";
 import { Category } from "../model";
 
 interface CategoriesItemComponentProps {
@@ -12,11 +13,18 @@ export const CategoriesItemComponent: React.FC<CategoriesItemComponentProps> = (
 ) => {
 	const { category } = props;
 
+	const handlePress = () => {
+		router.push(`/category-detail?id=${category.id}`);
+	};
+
 	return (
-		<View style={styles.container}>
+		<Pressable
+			style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+			onPress={handlePress}
+		>
 			<Image source={category.image} style={styles.image} />
 			<Text style={styles.title}>{category.name}</Text>
-		</View>
+		</Pressable>
 	);
 };
 
@@ -44,5 +52,9 @@ const styles = StyleSheet.create({
 		width: 70,
 		height: 70,
 		borderRadius: 8,
+	},
+	pressed: {
+		opacity: 0.8,
+		transform: [{ scale: 0.98 }],
 	},
 });

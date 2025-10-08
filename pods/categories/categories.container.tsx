@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fetchCategories } from "./api/api";
+import { fetchCategories } from "./api";
 import { CategoriesComponent } from "./categories.component";
 import { Category } from "./model";
 
